@@ -88,8 +88,7 @@ class PhotoEditor private constructor(builder: Builder) :
         val frmBorder = imageRootView.findViewById<FrameLayout>(R.id.frmBorder)
         val imgClose =
             imageRootView.findViewById<ImageView>(R.id.imgPhotoEditorClose)
-        val bitmap = mOnPhotoEditorListener?.onBeforeImageRender(desiredImage)
-        imageView.setImageBitmap(bitmap)
+        imageView.setImageBitmap(desiredImage)
         val multiTouchListener = multiTouchListener
         multiTouchListener.setOnGestureControl(object : MultiTouchListener.OnGestureControl {
             override fun onClick() {
@@ -113,6 +112,7 @@ class PhotoEditor private constructor(builder: Builder) :
             }
         })
         imageRootView.setOnTouchListener(multiTouchListener)
+        mOnPhotoEditorListener?.onBeforeImageRender(imageView)
         addViewToParent(imageRootView, ViewType.IMAGE)
         mOnPhotoEditorListener?.onImageAddListener(imageView)
 

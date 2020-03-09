@@ -1,6 +1,5 @@
 package app.spidy.photoeditor2.core
 
-import android.graphics.Bitmap
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -32,9 +31,7 @@ interface OnPhotoEditorListener {
 
     fun onViewSelected(currentView: CurrentView) {}
 
-    fun onBeforeImageRender(bitmap: Bitmap?): Bitmap? {
-        return bitmap
-    }
+    fun onBeforeImageRender(imageView: ImageView) {}
     fun onBeforeTextRender(textView: TextView) {}
     fun onBeforeEmojiRender(emojiTextView: TextView) {}
 
