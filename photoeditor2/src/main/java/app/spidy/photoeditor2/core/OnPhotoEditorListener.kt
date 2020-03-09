@@ -32,7 +32,9 @@ interface OnPhotoEditorListener {
 
     fun onViewSelected(currentView: CurrentView) {}
 
-    fun onBeforeImageRender(bitmap: Bitmap?) {}
+    fun onBeforeImageRender(bitmap: Bitmap?): Bitmap? {
+        return bitmap
+    }
     fun onBeforeTextRender(textView: TextView) {}
     fun onBeforeEmojiRender(emojiTextView: TextView) {}
 
