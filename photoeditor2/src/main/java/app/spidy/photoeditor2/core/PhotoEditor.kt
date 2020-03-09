@@ -124,6 +124,7 @@ class PhotoEditor private constructor(builder: Builder) :
         currentView.viewType = ViewType.IMAGE
         currentView.view = imageView
         currentView.rootView = imageRootView
+        mOnPhotoEditorListener?.onViewSelected(currentView)
     }
 
     /**
@@ -213,6 +214,7 @@ class PhotoEditor private constructor(builder: Builder) :
         currentView.viewType = ViewType.TEXT
         currentView.view = textInputTv
         currentView.rootView = textRootView
+        mOnPhotoEditorListener?.onViewSelected(currentView)
     }
 
     /**
@@ -332,6 +334,7 @@ class PhotoEditor private constructor(builder: Builder) :
         currentView.viewType = ViewType.EMOJI
         currentView.view = emojiTextView
         currentView.rootView = emojiRootView
+        mOnPhotoEditorListener?.onViewSelected(currentView)
     }
 
     /**
