@@ -5,5 +5,6 @@ import app.spidy.photoeditor2.core.ViewType
 
 data class CurrentView(
     var viewType: ViewType? = null,
-    var view: View? = null
+    var view: View? = null,
+    var rootView: View? = null
 )

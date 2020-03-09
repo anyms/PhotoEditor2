@@ -102,6 +102,7 @@ class PhotoEditor private constructor(builder: Builder) :
                 frmBorder.tag = !isBackgroundVisible
                 currentView.viewType = ViewType.IMAGE
                 currentView.view = imageView
+                currentView.rootView = imageRootView
             }
 
             override fun onLongClick() {
@@ -122,6 +123,7 @@ class PhotoEditor private constructor(builder: Builder) :
         addedViewCloseImages.add(imgClose)
         currentView.viewType = ViewType.IMAGE
         currentView.view = imageView
+        currentView.rootView = imageRootView
     }
 
     /**
@@ -188,6 +190,7 @@ class PhotoEditor private constructor(builder: Builder) :
                 frmBorder.tag = !isBackgroundVisible
                 currentView.viewType = ViewType.TEXT
                 currentView.view = textInputTv
+                currentView.rootView = textRootView
             }
 
             override fun onLongClick() {
@@ -213,6 +216,7 @@ class PhotoEditor private constructor(builder: Builder) :
         addedViewCloseImages.add(imgClose)
         currentView.viewType = ViewType.TEXT
         currentView.view = textInputTv
+        currentView.rootView = textRootView
     }
 
     /**
@@ -312,6 +316,7 @@ class PhotoEditor private constructor(builder: Builder) :
                 frmBorder.tag = !isBackgroundVisible
                 currentView.viewType = ViewType.EMOJI
                 currentView.view = emojiTextView
+                currentView.rootView = emojiRootView
             }
 
             override fun onLongClick() {}
@@ -327,6 +332,7 @@ class PhotoEditor private constructor(builder: Builder) :
         addedViewCloseImages.add(imgClose)
         currentView.viewType = ViewType.EMOJI
         currentView.view = emojiTextView
+        currentView.rootView = emojiRootView
     }
 
     /**
