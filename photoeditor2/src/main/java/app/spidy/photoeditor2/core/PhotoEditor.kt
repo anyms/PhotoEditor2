@@ -112,7 +112,7 @@ class PhotoEditor private constructor(builder: Builder) :
             }
         })
         imageRootView.setOnTouchListener(multiTouchListener)
-        mOnPhotoEditorListener?.onBeforeImageRender(imageView)
+        mOnPhotoEditorListener?.onBeforeImageRender(desiredImage)
         addViewToParent(imageRootView, ViewType.IMAGE)
         mOnPhotoEditorListener?.onImageAddListener(imageView)
 
