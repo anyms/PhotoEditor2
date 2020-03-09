@@ -31,6 +31,10 @@ interface OnPhotoEditorListener {
 
     fun onViewSelected(currentView: CurrentView) {}
 
+    fun onBeforeImageRender(imageView: ImageView) {}
+    fun onBeforeTextRender(textView: TextView) {}
+    fun onBeforeEmojiRender(emojiTextView: TextView) {}
+
     /**
      * This is a callback when user adds any view on the [PhotoEditorView] it can be
      * brush,text or sticker i.e bitmap on parent view
@@ -68,4 +72,6 @@ interface OnPhotoEditorListener {
 
 
     fun onImageAddListener(imageView: ImageView) {}
+    fun onTextAddListener(textView: TextView) {}
+    fun onEmojiAddListener(emojiTextView: TextView) {}
 }
