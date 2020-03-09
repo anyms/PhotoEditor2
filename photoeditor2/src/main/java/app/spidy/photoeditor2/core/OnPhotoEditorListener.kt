@@ -31,9 +31,9 @@ interface OnPhotoEditorListener {
 
     fun onViewSelected(currentView: CurrentView) {}
 
-    fun onBeforeImageRender(imageView: ImageView) {}
-    fun onBeforeTextRender(textView: TextView) {}
-    fun onBeforeEmojiRender(emojiTextView: TextView) {}
+    fun onBeforeImageRender(rootView: View?, imageView: ImageView) {}
+    fun onBeforeTextRender(rootView: View?, textView: TextView) {}
+    fun onBeforeEmojiRender(rootView: View?, emojiTextView: TextView) {}
 
     /**
      * This is a callback when user adds any view on the [PhotoEditorView] it can be

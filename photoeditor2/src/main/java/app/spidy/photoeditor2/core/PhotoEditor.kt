@@ -112,7 +112,7 @@ class PhotoEditor private constructor(builder: Builder) :
             }
         })
         imageRootView.setOnTouchListener(multiTouchListener)
-        mOnPhotoEditorListener?.onBeforeImageRender(imageView)
+        mOnPhotoEditorListener?.onBeforeImageRender(imageRootView, imageView)
         addViewToParent(imageRootView, ViewType.IMAGE)
         mOnPhotoEditorListener?.onImageAddListener(imageView)
 
@@ -204,7 +204,7 @@ class PhotoEditor private constructor(builder: Builder) :
             }
         })
         textRootView.setOnTouchListener(multiTouchListener)
-        mOnPhotoEditorListener?.onBeforeTextRender(textInputTv)
+        mOnPhotoEditorListener?.onBeforeTextRender(textRootView, textInputTv)
         addViewToParent(textRootView, ViewType.TEXT)
         mOnPhotoEditorListener?.onTextAddListener(textInputTv)
 
@@ -326,7 +326,7 @@ class PhotoEditor private constructor(builder: Builder) :
             }
         })
         emojiRootView.setOnTouchListener(multiTouchListener)
-        mOnPhotoEditorListener?.onBeforeEmojiRender(emojiTextView)
+        mOnPhotoEditorListener?.onBeforeEmojiRender(emojiRootView, emojiTextView)
         addViewToParent(emojiRootView, ViewType.EMOJI)
         mOnPhotoEditorListener?.onEmojiAddListener(emojiTextView)
 
