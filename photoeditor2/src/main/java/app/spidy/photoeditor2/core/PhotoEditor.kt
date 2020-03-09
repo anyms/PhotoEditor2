@@ -103,12 +103,12 @@ class PhotoEditor private constructor(builder: Builder) :
                 currentView.viewType = ViewType.IMAGE
                 currentView.view = imageView
                 currentView.rootView = imageRootView
+
+                mOnPhotoEditorListener?.onViewSelected(currentView)
             }
 
             override fun onLongClick() {
-                if (mOnPhotoEditorListener != null) {
-                    mOnPhotoEditorListener!!.onImageLongPress(imageView)
-                }
+                mOnPhotoEditorListener?.onImageLongPress(imageRootView, imageView)
             }
         })
         imageRootView.setOnTouchListener(multiTouchListener)
@@ -191,18 +191,14 @@ class PhotoEditor private constructor(builder: Builder) :
                 currentView.viewType = ViewType.TEXT
                 currentView.view = textInputTv
                 currentView.rootView = textRootView
+
+                mOnPhotoEditorListener?.onViewSelected(currentView)
             }
 
             override fun onLongClick() {
-                val textInput = textInputTv.text.toString()
-                val currentTextColor = textInputTv.currentTextColor
-                if (mOnPhotoEditorListener != null) {
-                    mOnPhotoEditorListener!!.onTextLongPress(
-                        textRootView,
-                        textInput,
-                        currentTextColor
-                    )
-                }
+//                val textInput = textInputTv.text.toString()
+//                val currentTextColor = textInputTv.currentTextColor
+                mOnPhotoEditorListener?.onTextLongPress(textRootView, textInputTv)
             }
         })
         textRootView.setOnTouchListener(multiTouchListener)
@@ -296,10 +292,9 @@ class PhotoEditor private constructor(builder: Builder) :
         val emojiRootView = getLayout(ViewType.EMOJI)
         val emojiTextView = emojiRootView!!.findViewById<TextView>(R.id.tvPhotoEditorText)
         val frmBorder = emojiRootView.findViewById<FrameLayout>(R.id.frmBorder)
-        val imgClose =
-            emojiRootView.findViewById<ImageView>(R.id.imgPhotoEditorClose)
+        val imgClose = emojiRootView.findViewById<ImageView>(R.id.imgPhotoEditorClose)
         if (emojiTypeface != null) {
-            emojiTextView.setTypeface(emojiTypeface)
+            emojiTextView.typeface = emojiTypeface
         }
         emojiTextView.textSize = 56f
         emojiTextView.text = emojiName
@@ -317,9 +312,13 @@ class PhotoEditor private constructor(builder: Builder) :
                 currentView.viewType = ViewType.EMOJI
                 currentView.view = emojiTextView
                 currentView.rootView = emojiRootView
+
+                mOnPhotoEditorListener?.onViewSelected(currentView)
             }
 
-            override fun onLongClick() {}
+            override fun onLongClick() {
+                mOnPhotoEditorListener?.onEmojiLongPress(emojiRootView, emojiTextView)
+            }
         })
         emojiRootView.setOnTouchListener(multiTouchListener)
         addViewToParent(emojiRootView, ViewType.EMOJI)

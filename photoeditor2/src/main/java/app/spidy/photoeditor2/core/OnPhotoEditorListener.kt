@@ -2,6 +2,8 @@ package app.spidy.photoeditor2.core
 
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
+import app.spidy.photoeditor2.CurrentView
 
 
 /**
@@ -23,15 +25,11 @@ interface OnPhotoEditorListener {
      * @param text      current text set on the view
      * @param colorCode current color value set on view
      */
-    fun onTextLongPress(
-        rootView: View?,
-        text: String?,
-        colorCode: Int
-    )
+    fun onTextLongPress(rootView: View?, textView: TextView)
+    fun onImageLongPress(rootView: View?, imageView: ImageView)
+    fun onEmojiLongPress(rootView: View?, emojiTextView: TextView)
 
-    fun onImageLongPress(
-        imageView: ImageView
-    )
+    fun onViewSelected(currentView: CurrentView)
 
     /**
      * This is a callback when user adds any view on the [PhotoEditorView] it can be
