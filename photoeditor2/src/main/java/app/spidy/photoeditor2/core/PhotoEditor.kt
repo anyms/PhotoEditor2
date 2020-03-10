@@ -529,6 +529,9 @@ class PhotoEditor private constructor(builder: Builder) :
                 addedViews.remove(removedView)
                 redoViews.add(removedView)
                 if (mOnPhotoEditorListener != null) {
+                    currentView.view = null
+                    currentView.rootView = null
+                    currentView.viewType = null
                     mOnPhotoEditorListener!!.onRemoveViewListener(viewType, addedViews.size)
                 }
             }
@@ -553,6 +556,9 @@ class PhotoEditor private constructor(builder: Builder) :
             if (mOnPhotoEditorListener != null) {
                 val viewTag = removeView!!.tag
                 if (viewTag != null && viewTag is ViewType) {
+                    currentView.view = null
+                    currentView.rootView = null
+                    currentView.viewType = null
                     mOnPhotoEditorListener!!.onRemoveViewListener(
                         viewTag as ViewType,
                         addedViews.size
@@ -850,6 +856,9 @@ class PhotoEditor private constructor(builder: Builder) :
             redoViews.add(removeView)
         }
         if (mOnPhotoEditorListener != null) {
+            currentView.view = null
+            currentView.rootView = null
+            currentView.viewType = null
             mOnPhotoEditorListener!!.onRemoveViewListener(ViewType.BRUSH_DRAWING, addedViews.size)
         }
     }

@@ -10,6 +10,7 @@ import android.view.View
 import androidx.annotation.ColorInt
 import androidx.annotation.VisibleForTesting
 import java.util.*
+import kotlin.math.abs
 
 
 /**
@@ -185,8 +186,8 @@ class BrushDrawingView @JvmOverloads constructor(
     }
 
     private fun touchMove(x: Float, y: Float) {
-        val dx = Math.abs(x - mTouchX)
-        val dy = Math.abs(y - mTouchY)
+        val dx = abs(x - mTouchX)
+        val dy = abs(y - mTouchY)
         if (dx >= TOUCH_TOLERANCE || dy >= TOUCH_TOLERANCE) {
             mPath!!.quadTo(mTouchX, mTouchY, (x + mTouchX) / 2, (y + mTouchY) / 2)
             mTouchX = x
