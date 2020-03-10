@@ -103,6 +103,7 @@ class PhotoEditor private constructor(builder: Builder) :
                 currentView.viewType = ViewType.IMAGE
                 currentView.view = imageView
                 currentView.rootView = imageRootView
+                currentView.textStyle = null
 
                 mOnPhotoEditorListener?.onViewSelected(currentView)
             }
@@ -125,6 +126,7 @@ class PhotoEditor private constructor(builder: Builder) :
         currentView.viewType = ViewType.IMAGE
         currentView.view = imageView
         currentView.rootView = imageRootView
+        currentView.textStyle = null
         mOnPhotoEditorListener?.onViewSelected(currentView)
     }
 
@@ -171,7 +173,6 @@ class PhotoEditor private constructor(builder: Builder) :
      */
     @SuppressLint("ClickableViewAccessibility")
     fun addText(text: String?, styleBuilder: TextStyleBuilder?) {
-        currentView.textStyle = styleBuilder
         brushDrawingView?.brushDrawingMode = false
         val textRootView = getLayout(ViewType.TEXT)
         val textInputTv = textRootView!!.findViewById<TextView>(R.id.tvPhotoEditorText)
@@ -194,6 +195,7 @@ class PhotoEditor private constructor(builder: Builder) :
                 currentView.viewType = ViewType.TEXT
                 currentView.view = textInputTv
                 currentView.rootView = textRootView
+                currentView.textStyle = styleBuilder
 
                 mOnPhotoEditorListener?.onViewSelected(currentView)
             }
@@ -218,6 +220,7 @@ class PhotoEditor private constructor(builder: Builder) :
         currentView.viewType = ViewType.TEXT
         currentView.view = textInputTv
         currentView.rootView = textRootView
+        currentView.textStyle = styleBuilder
         mOnPhotoEditorListener?.onViewSelected(currentView)
     }
 
@@ -318,6 +321,7 @@ class PhotoEditor private constructor(builder: Builder) :
                 currentView.viewType = ViewType.EMOJI
                 currentView.view = emojiTextView
                 currentView.rootView = emojiRootView
+                currentView.textStyle = null
 
                 mOnPhotoEditorListener?.onViewSelected(currentView)
             }
@@ -340,6 +344,7 @@ class PhotoEditor private constructor(builder: Builder) :
         currentView.viewType = ViewType.EMOJI
         currentView.view = emojiTextView
         currentView.rootView = emojiRootView
+        currentView.textStyle = null
         mOnPhotoEditorListener?.onViewSelected(currentView)
     }
 
