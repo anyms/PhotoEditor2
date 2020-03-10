@@ -171,6 +171,7 @@ class PhotoEditor private constructor(builder: Builder) :
      */
     @SuppressLint("ClickableViewAccessibility")
     fun addText(text: String?, styleBuilder: TextStyleBuilder?) {
+        currentView.textStyle = styleBuilder
         brushDrawingView?.brushDrawingMode = false
         val textRootView = getLayout(ViewType.TEXT)
         val textInputTv = textRootView!!.findViewById<TextView>(R.id.tvPhotoEditorText)
