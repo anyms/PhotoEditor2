@@ -1,11 +1,13 @@
 package app.spidy.photoeditor2.core
 
 import android.graphics.Rect
+import android.util.Log
 import android.view.GestureDetector
 import android.view.GestureDetector.SimpleOnGestureListener
 import android.view.MotionEvent
 import android.view.View
 import android.view.View.OnTouchListener
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import app.spidy.photoeditor2.EditorSettings
@@ -75,6 +77,9 @@ class MultiTouchListener(
                             currX - mPrevX,
                             currY - mPrevY
                         )
+                        Log.d("hello", "oldX: ${view.translationX}, oldY: ${view.translationY}")
+                        PhotoEditor.lastViewDelta.x = view.translationX
+                        PhotoEditor.lastViewDelta.y = view.translationY
                     }
                 }
             }
@@ -158,7 +163,6 @@ class MultiTouchListener(
             info.minimumScale = minimumScale
             info.maximumScale = maximumScale
             view?.also { move(view, info) }
-            PhotoEditor.currentView.info = info
             return !mIsTextPinchZoomable
         }
     }
@@ -205,7 +209,7 @@ class MultiTouchListener(
     }
 
     companion object {
-        private const val INVALID_POINTER_ID = -1
+        const val INVALID_POINTER_ID = -1
         private fun adjustAngle(degrees: Float): Float {
             var deg = degrees
             if (deg > 180.0f) {
@@ -232,7 +236,7 @@ class MultiTouchListener(
             view.rotation = rotation
         }
 
-        private fun adjustTranslation(
+        fun adjustTranslation(
             view: View,
             deltaX: Float,
             deltaY: Float

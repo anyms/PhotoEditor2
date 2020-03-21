@@ -20,6 +20,7 @@ import androidx.annotation.IntRange
 import androidx.annotation.RequiresPermission
 import androidx.annotation.UiThread
 import app.spidy.photoeditor2.CurrentView
+import app.spidy.photoeditor2.Delta
 import app.spidy.photoeditor2.EditorSettings
 import app.spidy.photoeditor2.R
 import java.io.File
@@ -58,6 +59,8 @@ class PhotoEditor private constructor(builder: Builder) :
     private val addedViewBorders = ArrayList<View>()
     private val addedViewCloseImages = ArrayList<View>()
     private val editorSettings = EditorSettings()
+
+    var currentView: CurrentView = CurrentView()
 
 
     var isRotationEnabled: Boolean
@@ -954,7 +957,7 @@ class PhotoEditor private constructor(builder: Builder) :
     }
 
     companion object {
-        var currentView: CurrentView = CurrentView()
+        val lastViewDelta = Delta()
 
         private const val TAG = "PhotoEditor"
         private fun convertEmoji(emoji: String): String {

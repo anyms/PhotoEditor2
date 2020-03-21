@@ -50,23 +50,13 @@ class MainActivity : AppCompatActivity() {
 
 
         saveBtn.setOnClickListener {
-            editor.saveAsBitmap(object : OnSaveBitmap {
-                override fun onBitmapReady(saveBitmap: Bitmap?) {
-                    saveBitmap?.also {
-                        val dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)!!
-                        val file = File(dir.absolutePath, "test.png")
-                        val fileOutputStream = FileOutputStream(file)
-                        it.compress(Bitmap.CompressFormat.PNG, 100, fileOutputStream)
-                        fileOutputStream.flush()
-                        fileOutputStream.close()
-
-                        Toast.makeText(this@MainActivity, "Saved!", Toast.LENGTH_SHORT).show()
-                    }
-                }
-                override fun onFailure(e: Exception?) {
-
-                }
-            })
+            val textView: TextView = editor.currentView.view as TextView
+            val delta = PhotoEditor.lastViewDelta
+            editor.addText(textView.text.toString(), editor.currentView.textStyle)
+            Log.d("hello", delta.toString())
+            val v = editor.currentView.rootView!!
+            v.translationX = delta.x
+            v.translationY = delta.y
         }
 
 

@@ -9,6 +9,5 @@ data class CurrentView(
     var viewType: ViewType? = null,
     var view: View? = null,
     var rootView: View? = null,
-    var textStyle: TextStyleBuilder? = null,
-    var info: MultiTouchListener.TransformInfo? = null
+    var textStyle: TextStyleBuilder? = null
 )
