@@ -173,12 +173,12 @@ class MultiTouchListener(
         var maximumScale = 0f
     }
 
-    internal interface OnMultiTouchListener {
+    interface OnMultiTouchListener {
         fun onEditTextClickListener(text: String?, colorCode: Int)
         fun onRemoveViewListener(removedView: View?)
     }
 
-    internal interface OnGestureControl {
+    interface OnGestureControl {
         fun onClick()
         fun onLongClick()
     }
