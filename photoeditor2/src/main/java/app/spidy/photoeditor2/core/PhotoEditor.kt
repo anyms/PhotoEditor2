@@ -41,6 +41,7 @@ import kotlin.collections.ArrayList
  */
 class PhotoEditor private constructor(builder: Builder) :
     BrushViewChangeListener {
+
     private val mLayoutInflater: LayoutInflater
     private val context: Context
     private val parentView: PhotoEditorView?
@@ -54,7 +55,6 @@ class PhotoEditor private constructor(builder: Builder) :
     private val mDefaultTextTypeface: Typeface?
     private val mDefaultEmojiTypeface: Typeface?
 
-    var currentView: CurrentView = CurrentView()
     private val addedViewBorders = ArrayList<View>()
     private val addedViewCloseImages = ArrayList<View>()
     private val editorSettings = EditorSettings()
@@ -954,6 +954,8 @@ class PhotoEditor private constructor(builder: Builder) :
     }
 
     companion object {
+        var currentView: CurrentView = CurrentView()
+
         private const val TAG = "PhotoEditor"
         private fun convertEmoji(emoji: String): String {
             val returnedEmoji: String

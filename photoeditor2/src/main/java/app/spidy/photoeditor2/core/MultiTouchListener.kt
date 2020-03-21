@@ -158,6 +158,7 @@ class MultiTouchListener(
             info.minimumScale = minimumScale
             info.maximumScale = maximumScale
             view?.also { move(view, info) }
+            PhotoEditor.currentView.info = info
             return !mIsTextPinchZoomable
         }
     }
