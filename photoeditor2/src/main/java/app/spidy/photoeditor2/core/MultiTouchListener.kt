@@ -162,7 +162,7 @@ class MultiTouchListener(
         }
     }
 
-    inner class TransformInfo {
+    class TransformInfo {
         var deltaX = 0f
         var deltaY = 0f
         var deltaScale = 0f
