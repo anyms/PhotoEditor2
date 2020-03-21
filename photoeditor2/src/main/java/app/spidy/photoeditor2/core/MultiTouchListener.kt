@@ -18,7 +18,7 @@ import app.spidy.photoeditor2.EditorSettings
  *
  *
  */
-internal class MultiTouchListener(
+class MultiTouchListener(
     deleteView: View?, parentView: RelativeLayout,
     photoEditImageView: ImageView, private val mIsTextPinchZoomable: Boolean,
     onPhotoEditorListener: OnPhotoEditorListener?,
