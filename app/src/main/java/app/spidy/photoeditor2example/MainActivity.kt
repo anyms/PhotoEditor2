@@ -71,23 +71,12 @@ class MainActivity : AppCompatActivity() {
 
 
         editor.setOnPhotoEditorListener(object : OnPhotoEditorListener {
-            override fun onTextLongPress(rootView: View?, text: String?, colorCode: Int) {
-                if (rootView != null) {
-                    editor.editText(rootView, "Jeeva kumar", textStyle)
-                }
-                fileChooser.open()
-                Toast.makeText(this@MainActivity, "Long press", Toast.LENGTH_SHORT).show()
-                editor.isRotationEnabled = true
-            }
             override fun onStartViewChangeListener(viewType: ViewType?) {}
             override fun onRemoveViewListener(viewType: ViewType?, numberOfAddedViews: Int) {}
             override fun onAddViewListener(viewType: ViewType?, numberOfAddedViews: Int) {}
             override fun onStopViewChangeListener(viewType: ViewType?) {}
             override fun onImageAddListener(imageView: ImageView) {
 
-            }
-            override fun onImageLongPress(imageView: ImageView) {
-                imageView.alpha = .5f
             }
         })
     }

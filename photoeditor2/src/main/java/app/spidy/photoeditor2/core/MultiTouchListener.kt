@@ -215,7 +215,7 @@ class MultiTouchListener(
             return deg
         }
 
-        private fun move(
+        fun move(
             view: View,
             info: TransformInfo
         ) {
