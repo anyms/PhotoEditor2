@@ -36,6 +36,7 @@ class OutlineSpan(
         val originTextColor = paint.color
 
         paint.apply {
+            isAntiAlias = true
             color = strokeColor
             style = Paint.Style.STROKE
             this.strokeWidth = this@OutlineSpan.strokeWidth
