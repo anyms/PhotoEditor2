@@ -60,7 +60,7 @@ interface OnPhotoEditorListener {
      *
      * @param viewType enum which define type of view is added
      */
-    fun onStartViewChangeListener(viewType: ViewType?, view: View) {}
+    fun onStartViewChangeListener(viewType: ViewType?, view: View?) {}
 
     /**
      * A callback when user stop/up touching a view which can be
@@ -68,7 +68,7 @@ interface OnPhotoEditorListener {
      *
      * @param viewType enum which define type of view is added
      */
-    fun onStopViewChangeListener(viewType: ViewType?, view: View) {}
+    fun onStopViewChangeListener(viewType: ViewType?, view: View?) {}
 
 
     fun onImageAddListener(imageView: ImageView) {}

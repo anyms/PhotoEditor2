@@ -874,13 +874,13 @@ class PhotoEditor private constructor(builder: Builder) :
 
     override fun onStartDrawing() {
         if (mOnPhotoEditorListener != null) {
-            mOnPhotoEditorListener!!.onStartViewChangeListener(ViewType.BRUSH_DRAWING)
+            mOnPhotoEditorListener!!.onStartViewChangeListener(ViewType.BRUSH_DRAWING, null)
         }
     }
 
     override fun onStopDrawing() {
         if (mOnPhotoEditorListener != null) {
-            mOnPhotoEditorListener!!.onStopViewChangeListener(ViewType.BRUSH_DRAWING)
+            mOnPhotoEditorListener!!.onStopViewChangeListener(ViewType.BRUSH_DRAWING, null)
         }
     }
 
