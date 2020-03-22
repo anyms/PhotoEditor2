@@ -365,7 +365,8 @@ class PhotoEditor private constructor(builder: Builder) :
         addedViews.add(rootView)
         if (mOnPhotoEditorListener != null) mOnPhotoEditorListener!!.onAddViewListener(
             viewType,
-            addedViews.size
+            addedViews.size,
+            rootView
         )
     }//multiTouchListener.setOnMultiTouchListener(this);
 
@@ -596,7 +597,7 @@ class PhotoEditor private constructor(builder: Builder) :
             }
             val viewTag = redoView!!.tag
             if (mOnPhotoEditorListener != null && viewTag != null && viewTag is ViewType) {
-                mOnPhotoEditorListener!!.onAddViewListener(viewTag as ViewType, addedViews.size)
+                mOnPhotoEditorListener!!.onAddViewListener(viewTag as ViewType, addedViews.size, redoView)
             }
         }
         return redoViews.size != 0
@@ -853,7 +854,7 @@ class PhotoEditor private constructor(builder: Builder) :
         }
         addedViews.add(brushDrawingView)
         if (mOnPhotoEditorListener != null) {
-            mOnPhotoEditorListener!!.onAddViewListener(ViewType.BRUSH_DRAWING, addedViews.size)
+            mOnPhotoEditorListener!!.onAddViewListener(ViewType.BRUSH_DRAWING, addedViews.size, null)
         }
     }
 
