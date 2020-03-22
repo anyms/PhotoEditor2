@@ -120,9 +120,11 @@ class MultiTouchListener(
     ) {
         val viewTag = view.tag
         if (mOnPhotoEditorListener != null && viewTag != null && viewTag is ViewType) {
-            if (isStart) mOnPhotoEditorListener.onStartViewChangeListener(view.tag as ViewType) else mOnPhotoEditorListener.onStopViewChangeListener(
-                view.tag as ViewType
-            )
+            if (isStart) {
+                mOnPhotoEditorListener.onStartViewChangeListener(view.tag as ViewType, view)
+            } else {
+                mOnPhotoEditorListener.onStopViewChangeListener(view.tag as ViewType, view)
+            }
         }
     }
 
