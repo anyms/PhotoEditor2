@@ -52,7 +52,7 @@ interface OnPhotoEditorListener {
      * @param viewType           enum which define type of view is added
      * @param numberOfAddedViews number of views currently added
      */
-    fun onRemoveViewListener(viewType: ViewType?, numberOfAddedViews: Int) {}
+    fun onRemoveViewListener(viewType: ViewType?, numberOfAddedViews: Int, view: View?) {}
 
     /**
      * A callback when user start dragging a view which can be

@@ -541,7 +541,7 @@ class PhotoEditor private constructor(builder: Builder) :
                     currentView.view = null
                     currentView.rootView = null
                     currentView.viewType = null
-                    mOnPhotoEditorListener!!.onRemoveViewListener(viewType, addedViews.size)
+                    mOnPhotoEditorListener!!.onRemoveViewListener(viewType, addedViews.size, removedView)
                 }
             }
         }
@@ -570,7 +570,8 @@ class PhotoEditor private constructor(builder: Builder) :
                     currentView.viewType = null
                     mOnPhotoEditorListener!!.onRemoveViewListener(
                         viewTag as ViewType,
-                        addedViews.size
+                        addedViews.size,
+                        removeView
                     )
                 }
             }
@@ -868,7 +869,7 @@ class PhotoEditor private constructor(builder: Builder) :
             currentView.view = null
             currentView.rootView = null
             currentView.viewType = null
-            mOnPhotoEditorListener!!.onRemoveViewListener(ViewType.BRUSH_DRAWING, addedViews.size)
+            mOnPhotoEditorListener!!.onRemoveViewListener(ViewType.BRUSH_DRAWING, addedViews.size, null)
         }
     }
 
