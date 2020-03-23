@@ -61,10 +61,6 @@ class MainActivity : AppCompatActivity() {
 
 
         editor.setOnPhotoEditorListener(object : OnPhotoEditorListener {
-            override fun onStartViewChangeListener(viewType: ViewType?) {}
-            override fun onRemoveViewListener(viewType: ViewType?, numberOfAddedViews: Int) {}
-            override fun onAddViewListener(viewType: ViewType?, numberOfAddedViews: Int) {}
-            override fun onStopViewChangeListener(viewType: ViewType?) {}
             override fun onImageAddListener(imageView: ImageView) {
 
             }
