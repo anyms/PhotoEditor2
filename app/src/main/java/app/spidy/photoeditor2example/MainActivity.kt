@@ -42,7 +42,6 @@ class MainActivity : AppCompatActivity() {
 
         val textStyle = TextStyleBuilder()
             .withTextColor(Color.WHITE)
-            .withTextOutline(Color.RED, 5)
             .withOpacity(0.5f)
             .withTextSize(50f)
 
@@ -51,12 +50,7 @@ class MainActivity : AppCompatActivity() {
 
         saveBtn.setOnClickListener {
             val textView: TextView = editor.currentView.view as TextView
-            val delta = PhotoEditor.lastViewDelta
             editor.addText(textView.text.toString(), editor.currentView.textStyle)
-            Log.d("hello", delta.toString())
-            val v = editor.currentView.rootView!!
-            v.translationX = delta.x
-            v.translationY = delta.y
         }
 
 

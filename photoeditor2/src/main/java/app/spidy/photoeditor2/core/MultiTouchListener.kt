@@ -77,7 +77,6 @@ class MultiTouchListener(
                             currX - mPrevX,
                             currY - mPrevY
                         )
-                        Log.d("hello", "oldX: ${view.translationX}, oldY: ${view.translationY}")
                         PhotoEditor.lastViewDelta.x = view.translationX
                         PhotoEditor.lastViewDelta.y = view.translationY
                     }
