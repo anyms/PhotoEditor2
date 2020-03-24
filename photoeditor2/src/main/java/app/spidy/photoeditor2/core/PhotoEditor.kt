@@ -50,6 +50,7 @@ class PhotoEditor private constructor(builder: Builder) :
     private val deleteView: View?
     private val brushDrawingView: BrushDrawingView?
     private val addedViews: MutableList<View?>
+    val addedCurrentViews = ArrayList<CurrentView>()
     private val redoViews: MutableList<View?>
     private var mOnPhotoEditorListener: OnPhotoEditorListener? = null
     private val isTextPinchZoomable: Boolean
@@ -103,10 +104,12 @@ class PhotoEditor private constructor(builder: Builder) :
                 frmBorder.setBackgroundResource(R.drawable.rounded_border_tv)
                 imgClose.visibility = View.VISIBLE
                 frmBorder.tag = !isBackgroundVisible
-//                currentView.viewType = ViewType.IMAGE
-//                currentView.view = imageView
-//                currentView.rootView = imageRootView
-//                currentView.textStyle = null
+
+                for (c in addedCurrentViews) {
+                    if (c.rootView == imageRootView) {
+                        currentView = c
+                    }
+                }
 
                 mOnPhotoEditorListener?.onViewSelected(currentView)
             }
@@ -195,10 +198,12 @@ class PhotoEditor private constructor(builder: Builder) :
                 frmBorder.setBackgroundResource(R.drawable.rounded_border_tv)
                 imgClose.visibility = View.VISIBLE
                 frmBorder.tag = !isBackgroundVisible
-//                currentView.viewType = ViewType.TEXT
-//                currentView.view = textInputTv
-//                currentView.rootView = textRootView
-//                currentView.textStyle = styleBuilder
+
+                for (c in addedCurrentViews) {
+                    if (c.rootView == textRootView) {
+                        currentView = c
+                    }
+                }
 
                 mOnPhotoEditorListener?.onViewSelected(currentView)
             }
@@ -224,6 +229,12 @@ class PhotoEditor private constructor(builder: Builder) :
         currentView.view = textInputTv
         currentView.rootView = textRootView
         currentView.textStyle = styleBuilder
+        addedCurrentViews.add(CurrentView(
+            viewType = currentView.viewType,
+            view = currentView.view,
+            rootView = currentView.rootView,
+            textStyle = currentView.textStyle
+        ))
         mOnPhotoEditorListener?.onViewSelected(currentView)
     }
 
@@ -322,10 +333,12 @@ class PhotoEditor private constructor(builder: Builder) :
                 frmBorder.setBackgroundResource(R.drawable.rounded_border_tv)
                 imgClose.visibility = View.VISIBLE
                 frmBorder.tag = !isBackgroundVisible
-//                currentView.viewType = ViewType.EMOJI
-//                currentView.view = emojiTextView
-//                currentView.rootView = emojiRootView
-//                currentView.textStyle = null
+
+                for (c in addedCurrentViews) {
+                    if (c.rootView == emojiRootView) {
+                        currentView = c
+                    }
+                }
 
                 mOnPhotoEditorListener?.onViewSelected(currentView)
             }
