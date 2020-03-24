@@ -57,6 +57,7 @@ class PhotoEditor private constructor(builder: Builder) :
     private val mDefaultEmojiTypeface: Typeface?
 
     private val addedViewBorders = ArrayList<View>()
+    private val addedCurrentViews = ArrayList<CurrentView>()
     private val addedViewCloseImages = ArrayList<View>()
     private val editorSettings = EditorSettings()
 
@@ -103,10 +104,18 @@ class PhotoEditor private constructor(builder: Builder) :
                 frmBorder.setBackgroundResource(R.drawable.rounded_border_tv)
                 imgClose.visibility = View.VISIBLE
                 frmBorder.tag = !isBackgroundVisible
-                currentView.viewType = ViewType.IMAGE
-                currentView.view = imageView
-                currentView.rootView = imageRootView
-                currentView.textStyle = null
+
+                var isFound = false
+                for (addedViewBorder in addedViewBorders) {
+                    for (v in addedCurrentViews) {
+                        if (addedViewBorder == v.rootView) {
+                            currentView = v
+                            isFound = true
+                            break
+                        }
+                    }
+                    if (isFound) break
+                }
 
                 mOnPhotoEditorListener?.onViewSelected(currentView)
             }
@@ -130,6 +139,12 @@ class PhotoEditor private constructor(builder: Builder) :
         currentView.view = imageView
         currentView.rootView = imageRootView
         currentView.textStyle = null
+        addedCurrentViews.add(CurrentView(
+            viewType = currentView.viewType,
+            view = currentView.view,
+            rootView = currentView.rootView,
+            textStyle = currentView.textStyle
+        ))
         mOnPhotoEditorListener?.onViewSelected(currentView)
     }
 
@@ -195,10 +210,18 @@ class PhotoEditor private constructor(builder: Builder) :
                 frmBorder.setBackgroundResource(R.drawable.rounded_border_tv)
                 imgClose.visibility = View.VISIBLE
                 frmBorder.tag = !isBackgroundVisible
-                currentView.viewType = ViewType.TEXT
-                currentView.view = textInputTv
-                currentView.rootView = textRootView
-                currentView.textStyle = styleBuilder
+
+                var isFound = false
+                for (addedViewBorder in addedViewBorders) {
+                    for (v in addedCurrentViews) {
+                        if (addedViewBorder == v.rootView) {
+                            currentView = v
+                            isFound = true
+                            break
+                        }
+                    }
+                    if (isFound) break
+                }
 
                 mOnPhotoEditorListener?.onViewSelected(currentView)
             }
@@ -224,6 +247,12 @@ class PhotoEditor private constructor(builder: Builder) :
         currentView.view = textInputTv
         currentView.rootView = textRootView
         currentView.textStyle = styleBuilder
+        addedCurrentViews.add(CurrentView(
+            viewType = currentView.viewType,
+            view = currentView.view,
+            rootView = currentView.rootView,
+            textStyle = currentView.textStyle
+        ))
         mOnPhotoEditorListener?.onViewSelected(currentView)
     }
 
@@ -321,10 +350,18 @@ class PhotoEditor private constructor(builder: Builder) :
                 frmBorder.setBackgroundResource(R.drawable.rounded_border_tv)
                 imgClose.visibility = View.VISIBLE
                 frmBorder.tag = !isBackgroundVisible
-                currentView.viewType = ViewType.EMOJI
-                currentView.view = emojiTextView
-                currentView.rootView = emojiRootView
-                currentView.textStyle = null
+
+                var isFound = false
+                for (addedViewBorder in addedViewBorders) {
+                    for (v in addedCurrentViews) {
+                        if (addedViewBorder == v.rootView) {
+                            currentView = v
+                            isFound = true
+                            break
+                        }
+                    }
+                    if (isFound) break
+                }
 
                 mOnPhotoEditorListener?.onViewSelected(currentView)
             }
@@ -348,7 +385,17 @@ class PhotoEditor private constructor(builder: Builder) :
         currentView.view = emojiTextView
         currentView.rootView = emojiRootView
         currentView.textStyle = null
+        addedCurrentViews.add(CurrentView(
+            viewType = currentView.viewType,
+            view = currentView.view,
+            rootView = currentView.rootView,
+            textStyle = currentView.textStyle
+        ))
         mOnPhotoEditorListener?.onViewSelected(currentView)
+    }
+
+    fun getAddedViewBorders(): List<View> {
+        return addedViewBorders
     }
 
     /**
@@ -363,11 +410,13 @@ class PhotoEditor private constructor(builder: Builder) :
         params.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE)
         parentView?.addView(rootView, params)
         addedViews.add(rootView)
-        if (mOnPhotoEditorListener != null) mOnPhotoEditorListener!!.onAddViewListener(
-            viewType,
-            addedViews.size,
-            rootView
-        )
+        if (mOnPhotoEditorListener != null) {
+            mOnPhotoEditorListener!!.onAddViewListener(
+                viewType,
+                addedViews.size,
+                rootView
+            )
+        }
     }//multiTouchListener.setOnMultiTouchListener(this);
 
     /**
@@ -959,6 +1008,7 @@ class PhotoEditor private constructor(builder: Builder) :
     }
 
     companion object {
+
         val lastViewDelta = Delta()
 
         private const val TAG = "PhotoEditor"
