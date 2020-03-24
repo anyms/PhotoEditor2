@@ -182,7 +182,7 @@ class PhotoEditor private constructor(builder: Builder) :
         val imgClose =
             textRootView.findViewById<ImageView>(R.id.imgPhotoEditorClose)
         val frmBorder = textRootView.findViewById<FrameLayout>(R.id.frmBorder)
-        textInputTv.text = " $text "
+        textInputTv.text = text
         styleBuilder?.applyStyle(textInputTv)
         val multiTouchListener = multiTouchListener
         multiTouchListener.setOnGestureControl(object : MultiTouchListener.OnGestureControl {
@@ -274,9 +274,6 @@ class PhotoEditor private constructor(builder: Builder) :
     ) {
         val inputTextView = view.findViewById<TextView>(R.id.tvPhotoEditorText)
         if (inputTextView != null && addedViews.contains(view) && !TextUtils.isEmpty(inputText)) {
-            var s = inputText!!
-            if (!s.endsWith(" ")) s = "$s "
-            if (!s.startsWith(" ")) s = " $s"
             inputTextView.text = inputText
             styleBuilder?.applyStyle(inputTextView)
             parentView?.updateViewLayout(view, view.layoutParams)
