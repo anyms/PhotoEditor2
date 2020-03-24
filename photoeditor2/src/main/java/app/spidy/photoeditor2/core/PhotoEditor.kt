@@ -103,10 +103,10 @@ class PhotoEditor private constructor(builder: Builder) :
                 frmBorder.setBackgroundResource(R.drawable.rounded_border_tv)
                 imgClose.visibility = View.VISIBLE
                 frmBorder.tag = !isBackgroundVisible
-                currentView.viewType = ViewType.IMAGE
-                currentView.view = imageView
-                currentView.rootView = imageRootView
-                currentView.textStyle = null
+//                currentView.viewType = ViewType.IMAGE
+//                currentView.view = imageView
+//                currentView.rootView = imageRootView
+//                currentView.textStyle = null
 
                 mOnPhotoEditorListener?.onViewSelected(currentView)
             }
@@ -195,10 +195,10 @@ class PhotoEditor private constructor(builder: Builder) :
                 frmBorder.setBackgroundResource(R.drawable.rounded_border_tv)
                 imgClose.visibility = View.VISIBLE
                 frmBorder.tag = !isBackgroundVisible
-                currentView.viewType = ViewType.TEXT
-                currentView.view = textInputTv
-                currentView.rootView = textRootView
-                currentView.textStyle = styleBuilder
+//                currentView.viewType = ViewType.TEXT
+//                currentView.view = textInputTv
+//                currentView.rootView = textRootView
+//                currentView.textStyle = styleBuilder
 
                 mOnPhotoEditorListener?.onViewSelected(currentView)
             }
@@ -322,10 +322,10 @@ class PhotoEditor private constructor(builder: Builder) :
                 frmBorder.setBackgroundResource(R.drawable.rounded_border_tv)
                 imgClose.visibility = View.VISIBLE
                 frmBorder.tag = !isBackgroundVisible
-                currentView.viewType = ViewType.EMOJI
-                currentView.view = emojiTextView
-                currentView.rootView = emojiRootView
-                currentView.textStyle = null
+//                currentView.viewType = ViewType.EMOJI
+//                currentView.view = emojiTextView
+//                currentView.rootView = emojiRootView
+//                currentView.textStyle = null
 
                 mOnPhotoEditorListener?.onViewSelected(currentView)
             }
