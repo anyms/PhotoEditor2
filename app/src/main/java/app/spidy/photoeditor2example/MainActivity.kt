@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var editorView: PhotoEditorView
     private lateinit var saveBtn: Button
     private lateinit var fileChooser: FileChooser
+    private lateinit var changeColorBtn: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,13 +38,12 @@ class MainActivity : AppCompatActivity() {
         editor = PhotoEditor.Builder(this, editorView).build()
         saveBtn = findViewById(R.id.saveBtn)
         fileChooser = FileChooser(this)
+        changeColorBtn = findViewById(R.id.changeColorBtn)
 
         editorView.source?.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.got_s))
 
         val textStyle = TextStyleBuilder()
-            .withTextColor(Color.WHITE)
-            .withOpacity(0.5f)
-            .withTextSize(50f)
+            .withTextColor(Color.RED)
 
         editor.addText("Hello, world", textStyle)
 
@@ -51,6 +51,12 @@ class MainActivity : AppCompatActivity() {
         saveBtn.setOnClickListener {
             val textView: TextView = editor.currentView.view as TextView
             editor.addText(textView.text.toString(), editor.currentView.textStyle)
+        }
+
+        changeColorBtn.setOnClickListener {
+            val textView: TextView = editor.currentView.view as TextView
+            editor.currentView.textStyle?.withTextColor(Color.YELLOW)
+            editor.editText(editor.currentView.rootView!!, textView.text.toString() + " Jeeva", editor.currentView.textStyle)
         }
 
 

@@ -20,11 +20,7 @@ import java.util.*
  * @since 14/05/2019
  */
 class TextStyleBuilder {
-    private val values: MutableMap<TextStyle, Any> = HashMap()
-
-    fun getValues(): Map<TextStyle, Any> {
-        return values
-    }
+    var values: MutableMap<TextStyle, Any> = hashMapOf()
 
     /**
      * Set this textSize style
@@ -215,4 +211,13 @@ class TextStyleBuilder {
         BACKGROUND("Background"), TEXT_APPEARANCE("TextAppearance");
 
     }
+}
+
+
+fun TextStyleBuilder.clone(): TextStyleBuilder {
+    val builder = TextStyleBuilder()
+    for ((k, v) in this.values) {
+        builder.values[k] = v
+    }
+    return builder
 }
